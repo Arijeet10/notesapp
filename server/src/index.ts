@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 3000;
 //Middlewares
 app.use(
   cors({
-    origin: "*",
+    origin: [process.env.REACT_APP_BASE_URL as string],
     methods: ["POST", "GET", "PATCH", "DELETE"],
     credentials: true
   })

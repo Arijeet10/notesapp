@@ -8,10 +8,6 @@ import authRoutes from "./routes/userRoutes";
 import noteRoutes from "./routes/noteRoutes";
 
 const app = express();
-const PORT = process.env.PORT || 3000;
-
-
-
 //Middlewares
 app.use(
   cors({
@@ -23,6 +19,12 @@ app.use(
 app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.json());
+
+const PORT = process.env.PORT || 3000;
+
+
+
+
 
 //Default
 app.get("/", (req: express.Request, res: express.Response) => {

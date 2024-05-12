@@ -42,7 +42,7 @@ export const deleteNoteById=async(id:number)=>await db.delete(notes).where(eq(no
 
 
 //to get notes by search text
-export const getNotesBySearch=async(search:string)=>{
-    const result=await db.select().from(notes).where(eq(notes.desc,search as any))
+export const getNotesBySearch=async(email:string,search:string)=>{
+    const result=await db.select().from(notes).where(eq(notes.email,email))
     return result;
 }

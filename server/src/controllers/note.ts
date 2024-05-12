@@ -21,7 +21,7 @@ export const searchnotes=async(req:express.Request,res:express.Response)=>{
     }
 
     //get the result notes as for the search query
-    const resultNotes=await getNotesBySearch(query)
+    const resultNotes=await getNotesBySearch(userEmail,query)
 
     //check if the notes is there in database or not
     if(!resultNotes){

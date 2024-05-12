@@ -8,7 +8,7 @@ const Login=()=>{
     const navigate=useNavigate();
 
     useEffect(() => {
-      const token=getToken();
+      const token=getToken()||"";
       if(token){
         navigate("/")
       }

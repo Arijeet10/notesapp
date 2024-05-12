@@ -14,12 +14,10 @@ const Search = () => {
 
   const [searchInput, setSearchInput] = useState("");
 
-  const [loading,setLoading]=useState(false);
-  const [error,setError]=useState(false);
 
   // debounce function to delay API call
   const debounce = (func: Function, delay: number) => {
-    let timeoutId: NodeJS.Timeout;
+    let timeoutId: ReturnType<typeof setTimeout>;
     return (...args: any[]) => {
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => func(...args), delay);
@@ -30,7 +28,6 @@ const Search = () => {
   //function to fetch the notes as per search input
   const getSearchedNotes = async () => {
     try {
-        setLoading(true)
       const res = await fetch(`${apiUrl}/searchnotes/?search=${searchInput}`, {
         method: "GET",
         headers: {
@@ -48,9 +45,6 @@ const Search = () => {
       }
     } catch (error) {
       console.log(error);
-      setError(true)
-    }finally{
-        setLoading(false)
     }
   };
 

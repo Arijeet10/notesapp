@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 3000;
 //Middlewares
 app.use(
   cors({
-    origin: [process.env.REACT_APP_BASE_URL as string],
+    origin: ["https://notesapp-client-548eo1gbz-arijeets-projects.vercel.app"],
     methods: ["POST", "GET", "PATCH", "DELETE"],
     credentials: true
   })

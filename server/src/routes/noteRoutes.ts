@@ -4,9 +4,7 @@ import { authMiddleware } from "../middlewares/authMiddleware";
 
 const router=express.Router();
 
-router.get('/',(req:express.Request,res:express.Response)=>{
-    res.send("Hello, this is notes app server")
-})
+
 
 
 router.post("/addnote",authMiddleware,addNote)

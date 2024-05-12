@@ -1,5 +1,5 @@
 import nodemailer from "nodemailer";
-import { ApiResponse } from "types/ApiResponse";
+import { ApiResponse } from "../types/ApiResponse";
 
 const transporter=nodemailer.createTransport({
     service:"Gmail",

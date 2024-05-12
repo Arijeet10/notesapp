@@ -16,6 +16,11 @@ app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.json());
 
+//Default
+app.get('/',(req:express.Request,res:express.Response)=>{
+    res.send("Hello, this is notes app server")
+})
+
 //Server Routes
 app.use('/auth',authRoutes);
 app.use('/',noteRoutes)

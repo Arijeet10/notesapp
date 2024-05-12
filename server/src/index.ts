@@ -1,4 +1,4 @@
-import express from "express";
+import express,{Request,Response,NextFunction} from "express";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import compression from "compression";
@@ -10,7 +10,8 @@ import noteRoutes from "./routes/noteRoutes";
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(function(req, res, next) {
+//allow origin access control 
+app.use(function(req:Request, res:Response, next:NextFunction) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET, PUT,PATCH, POST");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");

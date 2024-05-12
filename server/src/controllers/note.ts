@@ -116,6 +116,8 @@ export const editNote = async (req: express.Request, res: express.Response) => {
 
     //update the note
     const updatedNote={
+        id:id,
+        email:email,
         title:title||note.title,
         desc:desc||note.desc,
     };

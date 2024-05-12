@@ -35,7 +35,7 @@ export const getNoteById=async(id:number)=>{
 export const createNote=async(newNote:NewNote)=>await db.insert(notes).values(newNote).returning({id:notes.id,email:notes.email,title:notes.title,desc:notes.desc});
 
 //update note data by id
-export const updateNoteById=async(id:number,updatedNote:{title:string,desc:string})=>await db.update(notes).set(updatedNote).where(eq(notes.id,id)).returning({id:notes.id,email:notes.email,title:notes.title,desc:notes.desc});
+export const updateNoteById=async(id:number,updatedNote:Note)=>await db.update(notes).set(updatedNote).where(eq(notes.id,id)).returning({id:notes.id,email:notes.email,title:notes.title,desc:notes.desc});
 
 //delete note by id
 export const deleteNoteById=async(id:number)=>await db.delete(notes).where(eq(notes.id, id));

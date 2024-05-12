@@ -84,7 +84,7 @@ const Search = () => {
         <div
           className={`${
             !showSearch && "hidden"
-          } p-1 border shadow-sm rounded-sm flex items-center`}
+          } p-1 border shadow-sm rounded-sm flex items-center justify-center gap-[0.5vw]`}
         >
           <div className="p-1 hover:rounded-full hover:bg-slate-100">
             <FaArrowLeft

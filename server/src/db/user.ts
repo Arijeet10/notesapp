@@ -1,5 +1,5 @@
 import { drizzle } from "drizzle-orm/node-postgres";
-import { type InferSelectModel, type InferInsertModel, eq } from "drizzle-orm";
+import {  InferSelectModel,  InferInsertModel, eq } from "drizzle-orm";
 import { boolean, pgTable, serial, text } from "drizzle-orm/pg-core";
 import { Pool } from "pg";
 

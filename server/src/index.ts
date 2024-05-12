@@ -13,9 +13,9 @@ const PORT = process.env.PORT || 3000;
 //Middlewares
 app.use(
   cors({
-    credentials: true,
     origin: [process.env.REACT_APP_BASE_URL as string],
     methods: ["POST", "GET", "PATCH", "DELETE"],
+    credentials: true
   })
 );
 app.use(compression());

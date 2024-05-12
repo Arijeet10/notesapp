@@ -48,7 +48,7 @@ const LoginForm = () => {
         headers:{
           "Content-Type":"application/json"
         },
-        mode: 'no-cors',
+        mode: 'cors',
         credentials:"include",
         cache:"no-store",
         body:JSON.stringify(signinData)

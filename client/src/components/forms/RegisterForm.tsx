@@ -53,7 +53,6 @@ const RegisterForm = () => {
           },
           mode: 'cors',
           credentials: "include",
-          cache:"no-store",
           body:JSON.stringify(signupData)
         })
         const response=await res.json()

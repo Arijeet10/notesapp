@@ -50,7 +50,6 @@ const LoginForm = () => {
         },
         mode: 'cors',
         credentials:"include",
-        cache:"no-store",
         body:JSON.stringify(signinData)
       })
       const response=await res.json();

@@ -40,7 +40,6 @@ const AddNoteForm = () => {
           },
           mode: 'cors',
           credentials:"include",
-          cache:"no-store",
           body:JSON.stringify(payload)
         })
         const response=await res.json()

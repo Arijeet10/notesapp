@@ -1,4 +1,4 @@
-##NOTES APP 
+NOTES APP 
 
 To run the app on localserver, follow these steps:
 

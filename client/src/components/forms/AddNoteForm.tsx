@@ -38,6 +38,7 @@ const AddNoteForm = () => {
           headers:{
             "Content-Type":"application/json"
           },
+          mode: 'cors',
           credentials:"include",
           cache:"no-store",
           body:JSON.stringify(payload)

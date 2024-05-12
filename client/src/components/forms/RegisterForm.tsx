@@ -51,6 +51,8 @@ const RegisterForm = () => {
           headers:{
             "Content-Type":"application/json"
           },
+          mode: 'cors',
+          credentials: "include",
           cache:"no-store",
           body:JSON.stringify(signupData)
         })

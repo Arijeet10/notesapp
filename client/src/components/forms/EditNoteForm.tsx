@@ -40,6 +40,7 @@ const EditNoteForm: React.FC<Props> = ({ noteToEdit, closeAllModals }) => {
           headers: {
             "Content-Type": "application/json",
           },
+          mode: 'cors',
           credentials: "include",
           cache: "no-store",
           body: JSON.stringify(payload),

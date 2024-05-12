@@ -1,4 +1,4 @@
-import express,{Request,Response,NextFunction} from "express";
+import express from "express";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import compression from "compression";
@@ -10,18 +10,12 @@ import noteRoutes from "./routes/noteRoutes";
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-//allow origin access control 
-app.use(function(req:Request, res:Response, next:NextFunction) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, PUT,PATCH, POST");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+
 
 //Middlewares
 app.use(
   cors({
-    origin: [process.env.REACT_APP_BASE_URL as string],
+    origin: "*",
     methods: ["POST", "GET", "PATCH", "DELETE"],
     credentials: true
   })

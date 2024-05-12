@@ -1,5 +1,5 @@
 import {drizzle} from "drizzle-orm/node-postgres";
-import {type InferSelectModel,type InferInsertModel,eq, like} from "drizzle-orm";
+import {type InferSelectModel,type InferInsertModel,eq} from "drizzle-orm";
 import { pgTable,serial,text} from "drizzle-orm/pg-core";
 import {Pool} from "pg";
 
@@ -42,7 +42,7 @@ export const deleteNoteById=async(id:number)=>await db.delete(notes).where(eq(no
 
 
 //to get notes by search text
-export const getNotesBySearch=async(email:string,search:string)=>{
-    const result=await db.select().from(notes).where(eq(notes.desc,search))
+export const getNotesBySearch=async(search:string)=>{
+    const result=await db.select().from(notes).where(eq(notes.desc,search as any))
     return result;
 }

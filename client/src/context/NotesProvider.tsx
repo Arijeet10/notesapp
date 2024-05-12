@@ -37,7 +37,7 @@ const NotesContextProvider: React.FC<{ children: ReactNode }> = ({
         credentials: "include",
       });
       const response = await res.json();
-      console.log(response);
+      //console.log(response);
       if (res.ok) {
         setNotes(response.notes);
       }

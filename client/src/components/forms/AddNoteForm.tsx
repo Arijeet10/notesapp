@@ -22,7 +22,7 @@ const AddNoteForm = () => {
   //submit new note form data
   const handleSubmit =async (e: React.SyntheticEvent) => {
     e.preventDefault();
-    console.log(note)
+    //console.log(note)
     const user=getUser();
     const payload={
       email:user.email,
@@ -44,7 +44,7 @@ const AddNoteForm = () => {
           body:JSON.stringify(payload)
         })
         const response=await res.json()
-        console.log(response);
+        //console.log(response);
         if(res.ok){
           toast.success(response.message)
           fetchUserNotes()
@@ -88,11 +88,10 @@ const AddNoteForm = () => {
               />
             </div>
             <div>
-              <input
-                type="text"
+              <textarea
                 required
                 placeholder="Take a note..."
-                className={`w-full focus:outline-none ${
+                className={`w-full focus:outline-none text-wrap ${
                   expandAddNote ? "text-[1.5vw]" : "text-[2vw]"
                 }`}
                 onClick={() => setExpandAddNote(true)}

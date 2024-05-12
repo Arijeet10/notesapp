@@ -69,14 +69,14 @@ const LoginForm = () => {
           expiry:now.getTime()+24 * 60 * 60 * 1000
         }
         //set token in local storage
-        localStorage.setItem("token",JSON.stringify(tokenItem))
+         localStorage.setItem("token",JSON.stringify(tokenItem))
         
         const userData={
           email:response.user.email,
           expiry:now.getTime()+24 * 60 * 60 * 1000
         }
         //set user data in local storage
-        localStorage.setItem("user",JSON.stringify(userData))
+         localStorage.setItem("user",JSON.stringify(userData))
 
         //go to homepage
         navigate("/")

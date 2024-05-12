@@ -24,7 +24,7 @@ export const register=async(req:express.Request,res:express.Response)=>{
         }
 
         const token=jwt.sign({email},process.env.TOKEN_SECRET!,{expiresIn:'1h'});
-        const verifyUrl=`${process.env.CLIENT_URL}/verify/${token}`
+        const verifyUrl=`${process.env.REACT_APP_BASE_URL}/verify/${token}`
 
         //send verification mail
         const emailResponse=await sendEmail(email,verifyUrl)
@@ -93,7 +93,7 @@ export const login=async(req:express.Request,res:express.Response)=>{
         const cookiesOption={
             httpOnly:true,
             secure:true,
-            domain:process.env.REACT_APP_BASE_URL || "localhost",
+            domain:"localhost",
             path:"/",
         }
 

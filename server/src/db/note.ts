@@ -14,7 +14,12 @@ export type Note = InferSelectModel<typeof notes>;
 export type NewNote = InferInsertModel<typeof notes>;
 
 const pool=new Pool({
-    connectionString:process.env.DB,
+    //connectionString:process.env.DB,
+    user: process.env.DB_USERNAME,
+    host: process.env.DB_HOSTNAME,
+    database: 'postgres',
+    password: process.env.DB_PASSWORD,
+    port: 5432,
 });
 
 export const db=drizzle(pool);
@@ -35,7 +40,7 @@ export const getNoteById=async(id:number)=>{
 export const createNote=async(newNote:NewNote)=>await db.insert(notes).values(newNote).returning({id:notes.id,email:notes.email,title:notes.title,desc:notes.desc});
 
 //update note data by id
-export const updateNoteById=async(id:number,updatedNote:Note)=>await db.update(notes).set(updatedNote).where(eq(notes.id,id)).returning({id:notes.id,email:notes.email,title:notes.title,desc:notes.desc});
+export const updateNoteById=async(id:number,updatedNote:{title:string,desc:string})=>await db.update(notes).set(updatedNote).where(eq(notes.id,id)).returning({id:notes.id,email:notes.email,title:notes.title,desc:notes.desc});
 
 //delete note by id
 export const deleteNoteById=async(id:number)=>await db.delete(notes).where(eq(notes.id, id));
@@ -43,6 +48,6 @@ export const deleteNoteById=async(id:number)=>await db.delete(notes).where(eq(no
 
 //to get notes by search text
 export const getNotesBySearch=async(email:string,search:string)=>{
-    const result=await db.select().from(notes).where(eq(notes.email,email))
+    const result=await db.select().from(notes).where(eq(notes.desc,search))
     return result;
 }

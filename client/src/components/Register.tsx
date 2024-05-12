@@ -18,7 +18,7 @@ const Register=()=>{
 
     return (
         <>
-            <div className="flex flex-col sm:flex-row items-center sm:justify-center">
+            <div className="sm:h-[100vh] flex flex-col sm:flex-row items-center sm:justify-center">
                 <div className=" sm:w-[70vw]">
                     <img 
                         src="/sign-up.png"

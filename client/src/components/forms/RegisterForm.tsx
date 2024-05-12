@@ -58,7 +58,7 @@ const RegisterForm = () => {
         const response=await res.json()
         //console.log(response)
         if(res.ok){
-            toast.success(response.message)
+            toast.custom(response.message,{duration:6000})
             setSignupData({
               email:"",
               password:""

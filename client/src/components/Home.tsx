@@ -5,12 +5,15 @@ import NoteCard from "./NoteCard";
 import EditNoteForm from "./forms/EditNoteForm";
 import DeleteNoteConfirm from "./DeleteNoteConfirm";
 import { NoteDeleteType, NoteType } from "../types/NoteType";
+import { UserContext } from "../context/UserProvider";
 
 
 
 const Home = () => {
   const { notes, fetchUserNotes, loading, error } =
     useContext<NotesContextType>(NotesContext);
+
+  const {setLoggedInUser}=useContext(UserContext)
 
   //set note to be deleted
   const [noteToDelete, setNoteToDelete] = useState<NoteDeleteType>({id:0,email:""});
@@ -54,6 +57,7 @@ const Home = () => {
 
   useEffect(() => {
     fetchUserNotes();
+    setLoggedInUser();
   }, []);
 
   if (loading) {

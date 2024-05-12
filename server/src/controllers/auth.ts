@@ -93,7 +93,7 @@ export const login=async(req:express.Request,res:express.Response)=>{
         const cookiesOption={
             httpOnly:true,
             secure:true,
-            domain:"localhost",
+            domain:process.env.REACT_APP_BASE_URL|| "localhost",
             path:"/",
         }
 

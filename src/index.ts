@@ -11,7 +11,7 @@ const app=express();
 const PORT=process.env.PORT || 3000;
 
 //Middlewares
-app.use(cors({credentials:true,origin:true}));
+app.use(cors({credentials:true,origin:true,methods:["POST","GET","PATCH","DELETE"]}));
 app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.json());

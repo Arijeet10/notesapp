@@ -1,8 +1,7 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { getUser } from "../utils/getUserFromLocalStorage";
 import { UserContext } from "../context/UserProvider";
 import Search from "./Search";
 

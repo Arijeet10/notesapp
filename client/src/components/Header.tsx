@@ -111,7 +111,7 @@ const Header = () => {
             />
             )}
 
-            <div className={`w-[60vw] h-full bg-[#ffffff] fixed top-8 right-0 z-50 ${!sidebar && "hidden"} p-2 flex flex-col items-start gap-[2vh]`}>
+            <div className={`w-[60vw] h-full bg-[#ffffff] fixed top-8 right-0 z-50 ${!sidebar && "hidden"} px-2 py-10 flex flex-col items-center gap-[3vh]`}>
               <div className="">
                 <NavLink
                   to="/"

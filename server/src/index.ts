@@ -8,6 +8,12 @@ import authRoutes from "./routes/userRoutes";
 import noteRoutes from "./routes/noteRoutes";
 
 const app = express();
+const corsOptions={
+  origin: "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  preflightContinue: false,
+  optionsSuccessStatus: 200,
+}
 //Middlewares
 app.use(
   cors({
@@ -24,13 +30,13 @@ app.use(bodyParser.json());
 const PORT = process.env.PORT || 3000;
 
 //Default
-app.get("/", (req: express.Request, res: express.Response) => {
+app.get("/",cors(corsOptions), (req: express.Request, res: express.Response) => {
   res.send("Hello, this is notes app server");
 });
 
 //Server Routes
-app.use("/auth", authRoutes);
-app.use("/", noteRoutes);
+app.use("/auth",cors(corsOptions), authRoutes);
+app.use("/",cors(corsOptions), noteRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}...`);

@@ -1,44 +1,42 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { UserContext } from "../context/UserProvider";
 import Search from "./Search";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { IoClose } from "react-icons/io5";
 
 //import environment variables
 const apiUrl = import.meta.env.VITE_API_URL;
 
-
-
 const Header = () => {
   const navigate = useNavigate();
 
-  const {user,setLoggedInUser}=useContext(UserContext)
+  const { user, setLoggedInUser } = useContext(UserContext);
 
-  
+  const [sidebar, setSidebar] = useState(false);
+
   useEffect(() => {
     setLoggedInUser();
-  }, [])
-  
+  }, []);
 
   //logout user
   const handleLogout = async () => {
     try {
-      const res = await fetch(`${apiUrl}/auth/logout`,{
-        method:"GET",
-        mode:"cors",
+      const res = await fetch(`${apiUrl}/auth/logout`, {
+        method: "GET",
+        mode: "cors",
         credentials: "include",
       });
       const response = await res.json();
       //console.log(response)
       if (res.ok) {
-        
         //remove user and token from localstorage
         localStorage.removeItem("user");
         localStorage.removeItem("token");
         toast.success(response.message);
         navigate("/login");
-
       } else {
         toast.error(response.message);
       }
@@ -60,8 +58,9 @@ const Header = () => {
               </div>
             </Link>
           </div>
-          <div className="flex items-center justify-center gap-[2vw]">
 
+          {/* Desktop View */}
+          <div className="hidden sm:flex items-center justify-center gap-[2vw]">
             <div>
               <Search />
             </div>
@@ -69,7 +68,9 @@ const Header = () => {
             <NavLink
               to="/"
               className={({ isActive }) =>
-                `${isActive ? "text-[#D72638]" : "text-slate-600"} p-1 rounded-sm border border-transparent hover:bg-[#3A244A] hover:border-[#3A244A] hover:text-[#ffffff]`
+                `${
+                  isActive ? "text-[#D72638]" : "text-slate-600"
+                } p-1 rounded-sm border border-transparent hover:bg-[#3A244A] hover:border-[#3A244A] hover:text-[#ffffff]`
               }
             >
               Home
@@ -78,14 +79,17 @@ const Header = () => {
             <NavLink
               to="/about"
               className={({ isActive }) =>
-                `${isActive ? "text-[#D72638]" : "text-slate-600"} p-1 rounded-sm border border-transparent hover:bg-[#3A244A] hover:border-[#3A244A] hover:text-[#ffffff]`
+                `${
+                  isActive ? "text-[#D72638]" : "text-slate-600"
+                } p-1 rounded-sm border border-transparent hover:bg-[#3A244A] hover:border-[#3A244A] hover:text-[#ffffff]`
               }
             >
               About
             </NavLink>
 
             <div className="p-1 rounded-sm border border-transparent  hover:bg-[#3A244A] hover:border-[#3A244A] hover:text-white">
-              <span className="text-[#D72638]">User: </span>{user}
+              <span className="text-[#D72638]">User: </span>
+              {user}
             </div>
 
             <button
@@ -94,6 +98,57 @@ const Header = () => {
             >
               Log Out
             </button>
+          </div>
+
+          {/* Mobile View */}
+          <div className="sm:hidden text-[3vw]">
+            {sidebar ? (
+              <IoClose onClick={() => setSidebar(false)} />
+            ) : (
+              <RxHamburgerMenu
+              onClick={() => setSidebar(true)}
+              className={`}`}
+            />
+            )}
+
+            <div className={`w-[60vw] h-full bg-[#ffffff] fixed top-8 right-0 z-50 ${!sidebar && "hidden"} p-2 flex flex-col items-start gap-[2vh]`}>
+              <div className="">
+                <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    `${
+                      isActive ? "text-[#D72638]" : "text-slate-600"
+                    } p-1 rounded-sm border border-transparent hover:bg-[#3A244A] hover:border-[#3A244A] hover:text-[#ffffff]`
+                  }
+                >
+                  Home
+                </NavLink>
+              </div>
+              <div>
+                <NavLink
+                  to="/about"
+                  className={({ isActive }) =>
+                    `${
+                      isActive ? "text-[#D72638]" : "text-slate-600"
+                    } p-1 rounded-sm border border-transparent hover:bg-[#3A244A] hover:border-[#3A244A] hover:text-[#ffffff]`
+                  }
+                >
+                  About
+                </NavLink>
+              </div>
+              <div className="p-1 rounded-sm border border-transparent  hover:bg-[#3A244A] hover:border-[#3A244A] hover:text-white">
+                <span className="text-[#D72638]">User: </span>
+                {user}
+              </div>
+              <div>
+                <button
+                  onClick={() => handleLogout()}
+                  className="border border-transparent  rounded-sm p-1 font-bold hover:bg-red-700 hover:border-red-700 hover:text-white uppercase"
+                >
+                  Log Out
+                </button>
+              </div>
+            </div>
           </div>
         </nav>
       </header>

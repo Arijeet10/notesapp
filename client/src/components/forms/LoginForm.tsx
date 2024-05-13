@@ -49,7 +49,7 @@ const LoginForm = () => {
           "Content-Type":"application/json"
         },
         mode: 'cors',
-        credentials:"include",
+        credentials:"same-origin",
         body:JSON.stringify(signinData)
       })
       const response=await res.json();

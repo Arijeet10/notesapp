@@ -41,7 +41,7 @@ const EditNoteForm: React.FC<Props> = ({ noteToEdit, closeAllModals }) => {
             "Content-Type": "application/json",
           },
           mode: 'cors',
-          credentials: "include",
+          credentials:"same-origin",
           body: JSON.stringify(payload),
         });
         const response = await res.json();

@@ -14,7 +14,6 @@ const Search = () => {
 
   const [searchInput, setSearchInput] = useState("");
 
-
   // debounce function to delay API call
   const debounce = (func: Function, delay: number) => {
     let timeoutId: ReturnType<typeof setTimeout>;
@@ -23,7 +22,6 @@ const Search = () => {
       timeoutId = setTimeout(() => func(...args), delay);
     };
   };
-
 
   //function to fetch the notes as per search input
   const getSearchedNotes = async () => {
@@ -48,60 +46,56 @@ const Search = () => {
     }
   };
 
-
-
   //debouncing for 3 seconds
   const debouncedGetSearchedNotes = debounce(getSearchedNotes, 3000);
 
-
   useEffect(() => {
-    if(searchInput){
-        debouncedGetSearchedNotes(searchInput);
+    if (searchInput) {
+      debouncedGetSearchedNotes(searchInput);
     }
   }, [searchInput]);
 
-  const closeSearch=()=>{
-    setShowSearch(false)
+  const closeSearch = () => {
+    setShowSearch(false);
     setSearchInput("");
-  }
+  };
 
   return (
     <>
       <div>
-        {/* Search icon */}
-        <div
-          className={`${
-            showSearch && "hidden"
-          } p-1 hover:rounded-full hover:bg-slate-100`}
-        >
-          <IoSearch
-            onClick={() => setShowSearch(true)}
-            className="text-[#3A244A]"
-          />
-        </div>
+        {showSearch ? (
+          <div
+            className={` p-1 border shadow-sm rounded-sm flex items-center justify-center gap-[0.5vw]`}
+          >
+            {/* Search Section */}
+            <div className="p-1 hover:rounded-full hover:bg-slate-100">
+              <FaArrowLeft
+                onClick={() => closeSearch()}
+                className="text-[#3A244A]"
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                required
+                className="w-full focus:outline-none"
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
+              />
+            </div>
+          </div>
+        ) : (
+          <div
+            className={` p-2 border border-transparent hover:rounded-full hover:bg-slate-100`}
+          >
+            {/* Search icon */}
 
-        {/* Search Section */}
-        <div
-          className={`${
-            !showSearch && "hidden"
-          } p-1 border shadow-sm rounded-sm flex items-center justify-center gap-[0.5vw]`}
-        >
-          <div className="p-1 hover:rounded-full hover:bg-slate-100">
-            <FaArrowLeft
-              onClick={() => closeSearch()}
+            <IoSearch
+              onClick={() => setShowSearch(true)}
               className="text-[#3A244A]"
             />
           </div>
-          <div>
-            <input
-              type="text"
-              required
-              className="w-full focus:outline-none"
-              value={searchInput}
-              onChange={(e) => setSearchInput(e.target.value)}
-            />
-          </div>
-        </div>
+        )}
       </div>
     </>
   );

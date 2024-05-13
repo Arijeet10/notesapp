@@ -26,7 +26,8 @@ const Header = () => {
     try {
       const res = await fetch(`${apiUrl}/auth/logout`,{
         method:"GET",
-        credentials:"include",
+        mode:"cors",
+        credentials: "include",
       });
       const response = await res.json();
       //console.log(response)

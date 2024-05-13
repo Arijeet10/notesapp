@@ -34,7 +34,7 @@ const NotesContextProvider: React.FC<{ children: ReactNode }> = ({
           "Content-Type": "application/json",
         },
         mode: 'cors',
-        credentials:"same-origin",
+        credentials: "include",
       });
       const response = await res.json();
       //console.log(response);

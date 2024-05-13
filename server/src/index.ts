@@ -9,7 +9,7 @@ import noteRoutes from "./routes/noteRoutes";
 
 const app = express();
 const corsOptions={
-  origin: "*",
+  origin: "https://notesapp-m8r3.vercel.app",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   preflightContinue: false,
   optionsSuccessStatus: 200,
@@ -19,7 +19,7 @@ const corsOptions={
 //Middlewares
 app.use(
   cors({
-    origin: "*",
+    origin: "https://notesapp-m8r3.vercel.app",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     preflightContinue: false,
     optionsSuccessStatus: 200,

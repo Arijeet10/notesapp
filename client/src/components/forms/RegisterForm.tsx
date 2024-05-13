@@ -52,7 +52,7 @@ const RegisterForm = () => {
             "Content-Type":"application/json"
           },
           mode: 'cors',
-          credentials:"same-origin",
+          credentials: "include",
           body:JSON.stringify(signupData)
         })
         const response=await res.json()

@@ -13,6 +13,8 @@ const corsOptions={
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   preflightContinue: false,
   optionsSuccessStatus: 200,
+  credentials:true
+
 }
 //Middlewares
 app.use(
@@ -21,6 +23,7 @@ app.use(
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     preflightContinue: false,
     optionsSuccessStatus: 200,
+    credentials:true
   })
 );
 app.use(compression());

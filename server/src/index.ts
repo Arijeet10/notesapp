@@ -12,8 +12,9 @@ const app = express();
 app.use(
   cors({
     origin: "*",
-    methods: ["POST", "GET", "PATCH", "DELETE"],
-    credentials: true
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+    optionsSuccessStatus: 200,
   })
 );
 app.use(compression());
@@ -21,10 +22,6 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 
 const PORT = process.env.PORT || 3000;
-
-
-
-
 
 //Default
 app.get("/", (req: express.Request, res: express.Response) => {

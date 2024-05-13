@@ -8,13 +8,12 @@ import authRoutes from "./routes/userRoutes";
 import noteRoutes from "./routes/noteRoutes";
 
 const app = express();
-const corsOptions={
+export const corsOptions={
   origin: "https://notesapp-m8r3.vercel.app",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   preflightContinue: false,
   optionsSuccessStatus: 200,
   credentials:true
-
 }
 //Middlewares
 app.use(

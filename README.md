@@ -33,7 +33,7 @@ yarn
 8. Next, create a environment variable file (.env) on the root of client folder where package.json file is present. Fill the variables accordingly.
 
 ```bash
-VITE_API_URL=
+VITE_API_URL=https://notesapp-7u6x.onrender.com/
 ```
 
 8. Also, create environment variable file in the root of server folder too with the following variables.
